@@ -1,9 +1,11 @@
-[gd_scene load_steps=13 format=4 uid="uid://kgslinyl0aw5"]
+[gd_scene load_steps=14 format=4 uid="uid://kgslinyl0aw5"]
 
 [ext_resource type="Texture2D" uid="uid://5i6u7on8m7c2" path="res://Graphics/kenney_background-elements-redux/Backgrounds/backgroundCastles.png" id="1_8gbba"]
+[ext_resource type="Script" uid="uid://bupmkpxrvlh3y" path="res://Scripts/Player.tres.gd" id="2_6bp64"]
 [ext_resource type="Texture2D" uid="uid://d325onk8e1r1b" path="res://Graphics/kenney_new-platformer-pack-1.0/Sprites/Characters/Default/character_beige_front.png" id="2_jjvhh"]
+[ext_resource type="PackedScene" uid="uid://kw04cunw1nit" path="res://Scenes/bullet.tscn" id="3_344ge"]
 [ext_resource type="Texture2D" uid="uid://c5nm3pfhaayui" path="res://Graphics/kenney_new-platformer-pack-1.0/Spritesheets/spritesheet-tiles-double.png" id="3_kry3j"]
-[ext_resource type="Script" uid="uid://dh27cvrlwdg5t" path="res://bullet.gd" id="4_kry3j"]
+[ext_resource type="Script" uid="uid://dh27cvrlwdg5t" path="res://Scripts/bullet.gd" id="4_kry3j"]
 [ext_resource type="Texture2D" uid="uid://bevbv5khdo631" path="res://Graphics/kenney_new-platformer-pack-1.0/Sprites/Tiles/Default/brick_grey.png" id="5_21xkr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7mycd"]
@@ -14,48 +16,6 @@ texture_region_size = Vector2i(1024, 1024)
 [sub_resource type="TileSet" id="TileSet_272bh"]
 tile_size = Vector2i(1024, 1024)
 sources/1 = SubResource("TileSetAtlasSource_7mycd")
-
-[sub_resource type="GDScript" id="GDScript_5vw27"]
-script/source = "extends CharacterBody2D
-
-
-const SPEED = 300.0
-const JUMP_VELOCITY = -1200.0
-const GRAVITY = Vector2(0,3000) 
-
-
-func _physics_process(delta: float) -> void:
-	# Add the gravity.
-	if not is_on_floor():
-		velocity += GRAVITY * delta
-
-	# Handle jump.
-	if Input.is_action_just_pressed(\"Jump\") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-
-func _process(delta: float) -> void:
-	if  Input.is_action_pressed(\"Left\"):
-		position.x -= 10
-	elif Input.is_action_pressed(\"Right\"):
-		position.x+= 10
-	else:
-		position.x += 0
-	print(velocity)
-
-
-
-
-
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	#var direction := Input.get_axis(\"Left\", \"Right\")
-	#if direction:
-		#velocity.x = direction * SPEED
-	#else:
-		#velocity.x = move_toward(velocity.x, 0, SPEED)
-
-	move_and_slide()
-"
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kek77"]
 radius = 28.0
@@ -583,7 +543,8 @@ tile_set = SubResource("TileSet_272bh")
 
 [node name="Player" type="CharacterBody2D" parent="."]
 position = Vector2(81, -1437)
-script = SubResource("GDScript_5vw27")
+script = ExtResource("2_6bp64")
+Bullet = ExtResource("3_344ge")
 metadata/_edit_group_ = true
 
 [node name="playerHitbox" type="CollisionShape2D" parent="Player"]
@@ -606,8 +567,10 @@ position = Vector2(7, -1796)
 zoom = Vector2(0.4, 0.4)
 
 [node name="Bullet" type="Area2D" parent="."]
+position = Vector2(-44, -1457)
 scale = Vector2(0.25, 0.25)
 script = ExtResource("4_kry3j")
+metadata/_edit_group_ = true
 
 [node name="bulletHitbox" type="CollisionShape2D" parent="Bullet"]
 shape = SubResource("CapsuleShape2D_6bp64")

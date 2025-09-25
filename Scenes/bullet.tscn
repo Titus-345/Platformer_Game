@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://kw04cunw1nit"]
+
+[ext_resource type="Script" uid="uid://dh27cvrlwdg5t" path="res://Scripts/bullet.gd" id="1_v8qja"]
+[ext_resource type="Texture2D" uid="uid://bevbv5khdo631" path="res://Graphics/kenney_new-platformer-pack-1.0/Sprites/Tiles/Default/brick_grey.png" id="2_t4vbm"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6bp64"]
+
+[node name="Bullet" type="Area2D"]
+scale = Vector2(0.25, 0.25)
+script = ExtResource("1_v8qja")
+metadata/_edit_group_ = true
+
+[node name="bulletHitbox" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_6bp64")
+
+[node name="bulletGraphic" type="Sprite2D" parent="."]
+texture = ExtResource("2_t4vbm")
