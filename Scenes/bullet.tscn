@@ -6,7 +6,6 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6bp64"]
 
 [node name="Bullet" type="Area2D"]
-position = Vector2(10, -1167)
 scale = Vector2(10, 10)
 script = ExtResource("1_v8qja")
 metadata/_edit_group_ = true
