@@ -1,12 +1,10 @@
-[gd_scene load_steps=14 format=4 uid="uid://kgslinyl0aw5"]
+[gd_scene load_steps=11 format=4 uid="uid://kgslinyl0aw5"]
 
 [ext_resource type="Texture2D" uid="uid://5i6u7on8m7c2" path="res://Graphics/kenney_background-elements-redux/Backgrounds/backgroundCastles.png" id="1_8gbba"]
 [ext_resource type="Script" uid="uid://bupmkpxrvlh3y" path="res://Scripts/Player.tres.gd" id="2_6bp64"]
 [ext_resource type="Texture2D" uid="uid://d325onk8e1r1b" path="res://Graphics/kenney_new-platformer-pack-1.0/Sprites/Characters/Default/character_beige_front.png" id="2_jjvhh"]
 [ext_resource type="PackedScene" uid="uid://kw04cunw1nit" path="res://Scenes/bullet.tscn" id="3_344ge"]
 [ext_resource type="Texture2D" uid="uid://c5nm3pfhaayui" path="res://Graphics/kenney_new-platformer-pack-1.0/Spritesheets/spritesheet-tiles-double.png" id="3_kry3j"]
-[ext_resource type="Script" uid="uid://dh27cvrlwdg5t" path="res://Scripts/bullet.gd" id="4_kry3j"]
-[ext_resource type="Texture2D" uid="uid://bevbv5khdo631" path="res://Graphics/kenney_new-platformer-pack-1.0/Sprites/Tiles/Default/brick_grey.png" id="5_21xkr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7mycd"]
 texture = ExtResource("1_8gbba")
@@ -529,8 +527,6 @@ tile_size = Vector2i(128, 128)
 physics_layer_0/collision_layer = 1
 sources/2 = SubResource("TileSetAtlasSource_4c57u")
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6bp64"]
-
 [node name="Main" type="Node2D"]
 
 [node name="Parallax2D" type="Parallax2D" parent="."]
@@ -565,15 +561,3 @@ tile_set = SubResource("TileSet_efxa6")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(7, -1796)
 zoom = Vector2(0.4, 0.4)
-
-[node name="Bullet" type="Area2D" parent="."]
-position = Vector2(-44, -1457)
-scale = Vector2(0.25, 0.25)
-script = ExtResource("4_kry3j")
-metadata/_edit_group_ = true
-
-[node name="bulletHitbox" type="CollisionShape2D" parent="Bullet"]
-shape = SubResource("CapsuleShape2D_6bp64")
-
-[node name="bulletGraphic" type="Sprite2D" parent="Bullet"]
-texture = ExtResource("5_21xkr")

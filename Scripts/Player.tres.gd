@@ -25,8 +25,7 @@ func _process(delta: float) -> void:
 		Facing = 1
 	else:
 		position.x += 0
-		Facing = 0
-	if Input.is_action_pressed("Fire"):
+	if Input.is_action_just_pressed("Fire"):
 		var new_Bullet = Bullet.instantiate()
 		add_sibling(new_Bullet)
 

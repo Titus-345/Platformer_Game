@@ -6,7 +6,8 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6bp64"]
 
 [node name="Bullet" type="Area2D"]
-scale = Vector2(0.25, 0.25)
+position = Vector2(10, -1167)
+scale = Vector2(10, 10)
 script = ExtResource("1_v8qja")
 metadata/_edit_group_ = true
 
@@ -15,3 +16,5 @@ shape = SubResource("CapsuleShape2D_6bp64")
 
 [node name="bulletGraphic" type="Sprite2D" parent="."]
 texture = ExtResource("2_t4vbm")
+
+[connection signal="tree_entered" from="." to="." method="spawn"]
