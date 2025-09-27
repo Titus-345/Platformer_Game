@@ -5,6 +5,7 @@ const SPEED = 300.0
 const JUMP_VELOCITY = -1200.0
 const GRAVITY = Vector2(0,3000) 
 var Facing = 0
+var to_bullet_position = 0
 
 
 func _physics_process(delta: float) -> void:
@@ -28,6 +29,8 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("Fire"):
 		var new_Bullet = Bullet.instantiate()
 		add_sibling(new_Bullet)
+	to_bullet_position = position
+
 
 
 
