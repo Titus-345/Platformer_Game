@@ -9,7 +9,7 @@ var y_shift = Vector2(0,-90)
 
 func _ready() -> void:
 	world_coords = get_node("../Level").world_positions
-	Tiles = Level.get_used_cells()
+	Tiles = Level.get_used_cells_by_id(2)
 
 	for cell in Tiles:
 		var x = cell.x

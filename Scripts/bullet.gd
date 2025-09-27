@@ -13,7 +13,6 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	var Level = get_node("../Level")
 	var Player = get_node("../Player")
-	var Enemy = get_node("../enemy")
 	var local_to_player = self.to_local(Player.get_global_position())
 	var Width = get_viewport_rect().size.x
 	if abs(local_to_player.x) < 4*Width:
